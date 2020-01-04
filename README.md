@@ -3,16 +3,21 @@
 </a></p>
 <h1 align="center">Step By Step</h1>
 
-# Screenshot:
-![](./Screenshot.png)
+# Feature:
+```
+Information Gathering
+Vulnerability Scanner
+Stress Testing
+Password Attacks
+Web Hacking
+Exploitation Tools
+Sniffing & Spoofing
+Others
+```
 # Usage:
 ```
-pkg update && pkg upgrade
-apt-get install git
-apt-get install bash
 git clone https://github.com/stepbystepexe/Stepbystep
 cd Stepbystep
-ls
 bash stepbystep.sh
 ```
 # Paypal:
