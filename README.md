@@ -1,5 +1,5 @@
  <p align="center">
-  <img src="https://Stepbystep/Logo.png" width="200"/>
+  <img src="https://github.com/stepbystepexe/Stepbystep/blob/master/Logo.png" width="200"/>
 </a></p>
 <h1 align="center">Step By Step</h1>
 
