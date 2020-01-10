@@ -23,7 +23,7 @@ bash stepbystep.sh
 ```
 #### Screenshot:
 <p align="center">
-  <img src="https://github.com/stepbystepexe/Stepbystep/blob/master/Screenshot.png">
+  <img src="https://github.com/stepbystepexe/Stepbystep/blob/master/Screenshoot.png">
 </a></p>
 
 #### Paypal:
