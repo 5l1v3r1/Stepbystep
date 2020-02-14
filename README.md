@@ -3,17 +3,16 @@
 </a></p>
 <h1 align="center">Step By Step</h1>
 
-#### Fitur:
-```
-Information Gathering
-Vulnerability Scanner
-Stress Testing
-Password Attacks
-Web Hacking
-Exploitation Tools
-Sniffing & Spoofing
-Others
-```
+#### Daftra Fitur:
++ Information Gathering
++ Vulnerability Scanner
++ Stress Testing
++ Password Attacks
++ Web Hacking
++ Exploitation Tools
++ Sniffing & Spoofing
++ Others
+
 ##### Cara Menginstall:
 ```
 git clone https://github.com/stepbystepexe/Stepbystep
