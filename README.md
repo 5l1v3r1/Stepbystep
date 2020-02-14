@@ -3,7 +3,7 @@
 </a></p>
 <h1 align="center">Step By Step</h1>
 
-#### Feature:
+#### Fitur:
 ```
 Information Gathering
 Vulnerability Scanner
@@ -14,7 +14,7 @@ Exploitation Tools
 Sniffing & Spoofing
 Others
 ```
-##### Usage:
+##### Cara Menginstall:
 ```
 git clone https://github.com/stepbystepexe/Stepbystep
 cd Stepbystep
