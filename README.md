@@ -25,7 +25,7 @@ NB          : Manusia gax ada yang sempurna
 
 #### Daftar Fitur:
 + Information Gathering
-+ Vulnerability Scanner
++ Vulnerability Assessment
 + Stress Testing
 + Password Attacks
 + Web Hacking
