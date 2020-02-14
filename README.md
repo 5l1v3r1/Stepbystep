@@ -3,7 +3,27 @@
 </a></p>
 <h1 align="center">Step By Step</h1>
 
-#### Daftra Fitur:
+#### Informasi
+```
+Nama        : Stepbystep
+Versi       : 4.4 (Update: 17 November 2020, 6:30 PM)
+Tanggal     : 07 Mei 2019
+Author      : Nedi Senja
+Tujuan      : Sengaja di encrypt biar simpel
+              kumpulan tool termux
+Terimakasih : Allah SWT.
+              FR13NDS, & seluruh
+              manusia seplanet bumi
+NB          : Manusia gax ada yang sempurna
+              sama kaya tool ini.
+              Silahkan laporkan kritik atau saran
+              Ke - Email: d_q16x@outlook.co.id
+                 - WhatsApp: +62 8577-5433-901
+
+[ \e[4mGunakan tool ini dengan bijak \e[0m]\n"
+````
+
+#### Fitur:
 + Information Gathering
 + Vulnerability Scanner
 + Stress Testing
