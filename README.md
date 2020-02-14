@@ -20,10 +20,10 @@ NB          : Manusia gax ada yang sempurna
               Ke - Email: d_q16x@outlook.co.id
                  - WhatsApp: +62 8577-5433-901
 
-[ \e[4mGunakan tool ini dengan bijak \e[0m]\n"
+[ Gunakan tool ini dengan bijak ]
 ````
 
-#### Fitur:
+#### Daftar Fitur:
 + Information Gathering
 + Vulnerability Scanner
 + Stress Testing
