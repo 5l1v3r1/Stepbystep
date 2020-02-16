@@ -1,17 +1,17 @@
-#!/data/data/com.termux/files/usr/bin/bash
+#!/usr/bin/bash
 # Stepbystep
-# Coded by Senja
+# Coded by Nedi Senja
 # Github: https://github.com/stepbystepexe/Stepbystep
 checkroot(){
 if [[ "$(id -u)" -ne 0 ]]; then
-    printf "\e[0m[\e[1;91m!\e[0m] \e[1;77mPlease, run this program as root!\n\n\e[0m"
+    printf "\e[0m[\e[1;91m!\e[0m] \e[1;77mMohon, jalankan program root!\n\n\e[0m"
     exit 1
 fi
 }
 checktor() {
 check=$(curl --socks5-hostname localhost:9050 -s https://www.google.com > /dev/null; echo $?)
 if [[ "$check" -gt 0 ]]; then
-    printf "\e[1;91mPlease, check your TOR Connection! Just type \"tor\" or \"service tor start\"\n\e[0m"
+    printf "\e[1;91mMohon, anda cek koneksi TOR! dengan tipe \"tor\" or \"service tor start\"\n\e[0m"
     exit 1
 fi
 }
@@ -21,12 +21,14 @@ clearscreen(){
     sleep 1
 }
 dependencies(){
-    command -v bash > /dev/null 2>&1 || { echo >&2 "I require bash but it's not installed. Run ./install.sh. Aborting."; exit 1; }
-    command -v curl > /dev/null 2>&1 || { echo >&2 "I require curl but it's not installed. Run ./install.sh. Aborting."; exit 1; }
-    command -v tor > /dev/null 2>&1 || { echo >&2 "I require tor but it's not installed. Run ./install.sh Aborting."; exit 1; }
-    command -v openssl > /dev/null 2>&1 || { echo >&2 "I require openssl but it's not installed. Run ./install.sh Aborting."; exit 1; }
+    command -v bash > /dev/null 2>&1 || { echo >&2 "Sepertinya paket Bash belum terinstall. Jalankan ./install.sh. sekarang."; exit 1; }
+    command -v curl > /dev/null 2>&1 || { echo >&2 "Sepertinya paket cURL belum terinstall. Jalankan ./install.sh. sekarang."; exit 1; }
+    command -v wget > /dev/null 2>&1 || { echo >&2 "Sepertinya paket Wget belum terinstall. Jalankan ./install.sh. sekarang."; exit 1; }
+    command -v openssl > /dev/null 2>&1 || { echo >&2 "Sepertinya paket Openssl belum terinstall. Jalankan ./install.sh. sekarang."; exit 1; }
+    command -v tor > /dev/null 2>&1 || { echo >&2 "Sepertinya paket TOR belum terinstall. Jalankan ./install.sh. sekarang."; exit 1; }
+    command -v git > /dev/null 2>&1 || { echo >&2 "Sepertinya paket Git belum terinstall. Jalankan ./install.sh. sekarang."; exit 1; }
     if [ $(ls /dev/urandom >/dev/null; echo $?) == "1" ]; then
-        echo "/dev/urandom not found!"
+        echo "/dev/urandom tidak ditemukan!"
     exit 1
 fi
 }
@@ -46,28 +48,28 @@ load(){
 }
 banner(){
 printf "\n\e[0m
-  \e[0;96;2m██░▀██████████████▀░██   \e[0;31m█▀▀ \e[0;33m▀█▀ \e[0;34m█▀▀ \e[0;32m█▀█   \e[0;36m█▀▀ \e[0;93m▀█▀ \e[0;35m█▀▀ \e[0;37m█▀█
-  \e[0;96;2m█▌▒▒░████████████░▒▒▐█   \e[0;31m▀▀█ \e[0;33m █  \e[0;34m█▀▀ \e[0;32m█▀▀   \e[0;36m▀▀█ \e[0;93m █  \e[0;35m█▀▀ \e[0;37m█▀▀
-  \e[0;96;2m█░▒▒▒░██████████░▒▒▒░█   \e[0;31m▀▀▀ \e[0;33m ▀  \e[0;34m▀▀▀ \e[0;32m▀  \e[0mBY \e[0;36m▀▀▀ \e[0;93m ▀  \e[0;35m▀▀▀ \e[0;37m▀
-  \e[0;96;2m▌░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▐
-  \e[0;96;2m░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░    \e[0m[\e[1;96;2m01\e[0m] \e[1;77mInformation Gathering\e[0m
-  \e[0;96;2m███▀▀▀██▄▒▒▒▒▒▒▒▄██▀▀▀██  \e[0m[\e[1;96;2m02\e[0m] \e[1;77mVulnerability Scanner\e[0m
-  \e[0;96;2m██░░░▐█░▀█▒▒▒▒▒█▀░█▌░░░█  \e[0m[\e[1;96;2m03\e[0m] \e[1;77mStress Testing\e[0m
-  \e[0;96;2m▐▌░░░▐▄▌░▐▌▒▒▒▐▌░▐▄▌░░▐▌  \e[0m[\e[1;96;2m04\e[0m] \e[1;77mPassword Attacks\e[0m
-  \e[0;96;2m█░░░▐█▌░░▌▒▒▒▐░░▐█▌░░█    \e[0m[\e[1;96;2m05\e[0m] \e[1;77mWeb Hacking\e[0m\e[0m
-  \e[0;96;2m▒▀▄▄▄█▄▄▄▌░▄░▐▄▄▄█▄▄▀▒    \e[0m[\e[1;96;2m06\e[0m] \e[1;77mExploitation Tools\e[0m
-  \e[0;96;2m░░░░░░░░░░└┴┘░░░░░░░░░    \e[0m[\e[1;96;2m07\e[0m] \e[1;77mSniffing & Spoofing\e[0m
-  \e[0;96;2m██▄▄░░░░░░░░░░░░░░▄▄██    \e[0m[\e[1;96;2m08\e[0m] \e[1;77mOther\e[0m
-  \e[0;96;2m████████▒▒▒▒▒▒████████
-  \e[0;96;2m█▀░░███▒▒░░▒░░▒▀██████    \e[0m[\e[1;93m&\e[0m] LICENSE
-  \e[0;96;2m█▒░███▒▒╖░░╥░░╓▒▐█████    \e[0m[\e[1;94m#\e[0m] Information
-  \e[0;96;2m█▒░▀▀▀░░║░░║░░║░░█████    \e[0m[\e[1;92m*\e[0m] Update
-  \e[0;96;2m██▄▄▄▄▀▀┴┴╚╧╧╝╧╧╝┴┴███    \e[0m[\e[1;91m-\e[0m] Exit
+  \e[0;36;2m██░▀██████████████▀░██   \e[0;31m█▀▀ \e[0;33m▀█▀ \e[0;34m█▀▀ \e[0;32m█▀█   \e[0;36m█▀▀ \e[0;93m▀█▀ \e[0;35m█▀▀ \e[0;37m█▀█
+  \e[0;36;2m█▌▒▒░████████████░▒▒▐█   \e[0;31m▀▀█ \e[0;33m █  \e[0;34m█▀▀ \e[0;32m█▀▀   \e[0;36m▀▀█ \e[0;93m █  \e[0;35m█▀▀ \e[0;37m█▀▀
+  \e[0;36;2m█░▒▒▒░██████████░▒▒▒░█   \e[0;31m▀▀▀ \e[0;33m ▀  \e[0;34m▀▀▀ \e[0;32m▀  \e[0mBY \e[0;36m▀▀▀ \e[0;93m ▀  \e[0;35m▀▀▀ \e[0;37m▀
+  \e[0;36;2m▌░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░▐
+  \e[0;36;2m░▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒░    \e[0m[\e[1;96;2m01\e[0m] \e[1;77mInformation Gathering\e[0m
+ \e[0;36;2m███▀▀▀██▄▒▒▒▒▒▒▒▄██▀▀▀██   \e[0m[\e[1;96;2m02\e[0m] \e[1;77mVulnerability Assessment\e[0m
+ \e[0;36;2m██░░░▐█░▀█▒▒▒▒▒█▀░█▌░░░█   \e[0m[\e[1;96;2m03\e[0m] \e[1;77mStress Testing\e[0m
+ \e[0;36;2m▐▌░░░▐▄▌░▐▌▒▒▒▐▌░▐▄▌░░▐▌   \e[0m[\e[1;96;2m04\e[0m] \e[1;77mPassword Attacks\e[0m
+  \e[0;36;2m█░░░▐█▌░░▌▒▒▒▐░░▐█▌░░█    \e[0m[\e[1;96;2m05\e[0m] \e[1;77mWeb Hacking\e[0m\e[0m
+  \e[0;36;2m▒▀▄▄▄█▄▄▄▌░▄░▐▄▄▄█▄▄▀▒    \e[0m[\e[1;96;2m06\e[0m] \e[1;77mExploitation Tools\e[0m
+  \e[0;36;2m░░░░░░░░░░└┴┘░░░░░░░░░    \e[0m[\e[1;96;2m07\e[0m] \e[1;77mSniffing & Spoofing\e[0m
+  \e[0;36;2m██▄▄░░░░░░░░░░░░░░▄▄██    \e[0m[\e[1;96;2m08\e[0m] \e[1;77mOther\e[0m
+  \e[0;36;2m████████▒▒▒▒▒▒████████
+  \e[0;36;2m█▀░░███▒▒░░▒░░▒▀██████    \e[0m[\e[1;93m&\e[0m] LISENSI
+  \e[0;36;2m█▒░███▒▒╖░░╥░░╓▒▐█████    \e[0m[\e[1;94m#\e[0m] Informasi
+  \e[0;36;2m█▒░▀▀▀░░║░░║░░║░░█████    \e[0m[\e[1;92m*\e[0m] Perbarui
+  \e[0;36;2m██▄▄▄▄▀▀┴┴╚╧╧╝╧╧╝┴┴███    \e[0m[\e[1;91m-\e[0m] Keluar
 
-  \e[0;1;100;77m[=    v1.0, Beta    =]\e[0m   "
+  \e[0;1;100;77m[=    v4.4, Beta    =]\e[0m   "
 }
 menu(){
-    read -p $' \e[0m[\e[1;95m/\e[0m] \e[1;77mSelect an option: \e[0m\en' option
+    read -p $' \e[0m[\e[1;95m/\e[0m] \e[1;77mMasukan opsi: \e[0m\en' option
         if [[ $option == 01 || $option == 1 ]]; then
         infoga
             elif [[ $option == 02 || $option == 2 ]]; then
@@ -88,20 +90,24 @@ menu(){
                     echo
                     nano LICENSE
                     echo
-                    exit 1
+                    clearscreen
+                    banner
+                    menu
                     elif [[ $option == '#' ]]; then
                     echo
-                    nano README.md
+                    informasi
                     echo
-                    exit 1
                     elif [[ $option == '*' ]]; then
                     echo
                     git pull origin master
                     echo
-                    exit 1
+                    read -p $'\e[0m[\e[92m Tekan Enter \e[0m]'
+                    clearscreen
+                    banner
+                    menu
                     elif [[ $option == '-' ]]; then
                     echo
-                    printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mExit the program!\n\e[0m"
+                    printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mKeluar dari program!\n\e[0m"
                     echo
                     exit 1
                 elif [[ $option == './install.sh' ]]; then
@@ -112,12 +118,41 @@ menu(){
                 bash install.sh
         else
             echo
-            printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mInvalid option!\n\e[0m"
+            printf "\e[0m[=\e[1;41;77m Pilihan Salah \e[0m=]"
             echo
             sleep 1
             clearscreen
             banner
             menu
+    fi
+}
+informasi(){
+clear
+printf "\e[0;1;47;90m[             Stepbystep, My Github: @stepbystepexe             ]\e[0m\n"
+toilet -f smslant 'StepByStep'
+printf "
+Nama        : Stepbystep
+Versi       : 4.4 (Update: 17 November 2020, 6:30 PM)
+Tanggal     : 07 Mei 2019
+Author      : Nedi Senja
+Tujuan      : Sengaja di encrypt biar simpel
+              kumpulan tool termux
+Terimakasih : Allah SWT.
+              FR13NDS, & seluruh
+              manusia seplanet bumi
+NB          : Manusia gax ada yang sempurna
+              sama kaya tool ini.
+              Silahkan laporkan kritik atau saran
+              Ke - Email: d_q16x@outlook.co.id
+                 - WhatsApp: +62 8577-5433-901
+
+[ \e[4mGunakan tool ini dengan bijak \e[0m]\n"
+sleep 1
+read -p $'\n\n\e[0m[ Tekan Enter ]' opt
+    if [[ $opt = '' ]]; then
+        clearscreen
+        banner
+        menu
     fi
 }
 infoga(){
@@ -179,19 +214,19 @@ infoga(){
     sleep 0.03
     printf "\e[0m[\e[1;92;2m27\e[0m] ASU\n"
     sleep 0.03
-    printf "\e[0m[\e[1;92;2m28\e[0m] fim\n"
+    printf "\e[0m[\e[1;92;2m28\e[0m] FIM\n"
     sleep 0.03
     printf "\e[0m[\e[1;92;2m29\e[0m] MaxSubdoFinder\n"
     sleep 0.03
-    printf "\e[0m[\e[1;92;2m30\e[0m] pwnedOrNot\n"
+    printf "\e[0m[\e[1;92;2m30\e[0m] PwnedOrNot\n"
     sleep 0.03
     printf "\e[0m[\e[1;92;2m31\e[0m] Mac-Lookup\n"
     sleep 0.03
     printf "\e[0m[\e[1;92;2m32\e[0m] BillCypher\n"
     sleep 0.03
-    printf "\e[0m[\e[1;92;2m00\e[0m] Back to main menu\n"
+    printf "\e[0m[\e[1;92;2m00\e[0m] Kembali ke menu\n"
     sleep 1
-    read -p $'\n\e[0m[\e[1;97m+\e[0m] \e[1;77mSelect an option: \e[0m\en' infoga
+    read -p $'\n\e[0m[\e[1;97m+\e[0m] \e[1;77mMasukan opsi: \e[0m\en' infoga
         if [[ $infoga == '01' || $infoga == '1' ]]; then
         load
         echo
@@ -326,7 +361,7 @@ infoga(){
         load
         echo
         cd tools/ASU
-        python2 ASU.py
+        python3 ASU.py
             elif [[ $infoga == '28' ]]; then
             load
             echo
@@ -354,18 +389,19 @@ infoga(){
                             python billcipher.py
                 elif [[ $infoga == '00' || $infoga == '0' ]]; then
                 echo
-                printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mBack to main menu!\n\e[0m"
+                printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mKembali ke menu!\n\e[0m"
                 echo
                 sleep 1
-                clear
+                clearscreen
                 banner
                 menu
         else
             echo
-            printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mInvalid option!\n\e[0m"
+            printf "\e[0m[=\e[1;41;77m Pilihan Salah \e[0m=]"
             echo
             sleep 1
             clear
+            reset
             banner
             infoga
     fi
@@ -419,9 +455,9 @@ vulner(){
     sleep 0.03
     printf "\e[0m[\e[1;91m22\e[0m] OWScan\n"
     sleep 0.03
-    printf "\e[0m[\e[1;91m00\e[0m] Back to main menu\n"
+    printf "\e[0m[\e[1;91m00\e[0m] Kembali ke menu\n"
     sleep 1
-    read -p $'\n\e[0m[\e[1;97m+\e[0m] \e[1;77mSelect an option: \e[0m\en' vulner
+    read -p $'\n\e[0m[\e[1;97m+\e[0m] \e[1;77mMasukan opsi: \e[0m\en' vulner
         if [[ $vulner == '01' || $vulner == '1' ]]; then
         load
         echo
@@ -534,18 +570,19 @@ vulner(){
                     php owscan.php
                 elif [[ $vulner == '00' || $vulner == '0' ]]; then
                 echo
-                printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mBack to main menu!\n\e[0m"
+                printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mKembali ke menu!\n\e[0m"
                 echo
                 sleep 1
-                clear
+                clearscreen
                 banner
                 menu
         else
             echo
-            printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mInvalid option!\n\e[0m"
+            printf "\e[0m[=\e[1;41;77m Pilihan Salah \e[0m=]"
             echo
             sleep 1
             clear
+            reset
             banner
             vulner
     fi
@@ -571,11 +608,11 @@ testing(){
     sleep 0.03
     printf "\e[0m[\e[1;94m08\e[0m] Xshell\n"
     sleep 0.03
-    printf "\e[0m[\e[1;94m09\e[0m] santet-online\n"
+    printf "\e[0m[\e[1;94m09\e[0m] Santet-Online\n"
     sleep 0.03
-    printf "\e[0m[\e[1;94m00\e[0m] Back to main menu\n"
+    printf "\e[0m[\e[1;94m00\e[0m] Kembali ke menu\n"
     sleep 1
-    read -p $'\n\e[0m[\e[1;97m+\e[0m] \e[1;77mSelect an option: \e[0m\en' testing
+    read -p $'\n\e[0m[\e[1;97m+\e[0m] \e[1;77mMasukan opsi: \e[0m\en' testing
         if [[ $testing == '01' || $testing == '1' ]]; then
         load
         echo
@@ -585,56 +622,57 @@ testing(){
             load
             echo
             cd tools/fl00d
-            ls
-                elif [[ $testing == '03' || $testing == '2' ]]; then
+            python2 fl00d.py
+                elif [[ $testing == '03' || $testing == '3' ]]; then
                 load
                 echo
                 cd tools/GoldenEye
                 python3 goldeneye.py
-                    elif [[ $testing == '04' || $testing == '2' ]]; then
+                    elif [[ $testing == '04' || $testing == '4' ]]; then
                     load
                     echo
                     cd tools/xerxes
                     clang xerxes.c
-                        elif [[ $testing == '05' || $testing == '2' ]]; then
+                        elif [[ $testing == '05' || $testing == '5' ]]; then
                         load
                         echo
                         cd tools/Planetwork-DDOS
                         python2 pntddos.py
-                    elif [[ $testing == '06' || $testing == '2' ]]; then
+                    elif [[ $testing == '06' || $testing == '6' ]]; then
                     load
                     echo
                     hydra -h
                     exit 1
-                elif [[ $testing == '07' || $testing == '2' ]]; then
+                elif [[ $testing == '07' || $testing == '7' ]]; then
                 load
                 echo
                 cd tools/blackhydra
                 python2 blackhydra.py
-            elif [[ $testing == '08' || $testing == '2' ]]; then
+            elif [[ $testing == '08' || $testing == '8' ]]; then
             load
             echo
             cd tools/Xshell
             python3 xshell.py
-        elif [[ $testing == '09' || $testing == '2' ]]; then
+        elif [[ $testing == '09' || $testing == '9' ]]; then
         load
         echo
         cd tools/santet-online
         python2 santet.py
                 elif [[ $testing == '00' || $testing == '0' ]]; then
                 echo
-                printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mBack to main menu!\n\e[0m"
+                printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mKembali ke menu!\n\e[0m"
                 echo
                 sleep 1
-                clear
+                clearscreen
                 banner
                 menu
         else
             echo
-            printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mInvalid option!\n\e[0m"
+            printf "\e[0m[=\e[1;41;77m Pilihan Salah \e[0m=]"
             echo
             sleep 1
             clear
+            reset
             banner
             testing
     fi
@@ -670,7 +708,7 @@ attacks(){
     sleep 0.03
     printf "\e[0m[\e[1;93m13\e[0m] BlackBox\n"
     sleep 0.03
-    printf "\e[0m[\e[1;93m14\e[0m] PesbukMBF\n"
+    printf "\e[0m[\e[1;93m14\e[0m] Multiface\n"
     sleep 0.03
     printf "\e[0m[\e[1;93m15\e[0m] Hasher\n"
     sleep 0.03
@@ -682,15 +720,17 @@ attacks(){
     sleep 0.03
     printf "\e[0m[\e[1;93m19\e[0m] Crunch\n"
     sleep 0.03
-    printf "\e[0m[\e[1;93m20\e[0m] Hekpesbuk\n"
+    printf "\e[0m[\e[1;93m20\e[0m] Darkroom\n"
     sleep 0.03
     printf "\e[0m[\e[1;93m21\e[0m] ASU\n"
     sleep 0.03
     printf "\e[0m[\e[1;93m22\e[0m] Katak\n"
     sleep 0.03
-    printf "\e[0m[\e[1;93m00\e[0m] Back to main menu\n"
+    printf "\e[0m[\e[1;93m23\e[0m] Facecracks\n"
+    sleep 0.03
+    printf "\e[0m[\e[1;93m00\e[0m] Kembali ke menu\n"
     sleep 1
-    read -p $'\n\e[0m[\e[1;97m+\e[0m] \e[1;77mSelect an option: \e[0m\en' attacks
+    read -p $'\n\e[0m[\e[1;97m+\e[0m] \e[1;77mMasukan opsi: \e[0m\en' attacks
         if [[ $attacks == '01' || $attacks == '1' ]]; then
         load
         echo
@@ -710,7 +750,7 @@ attacks(){
                     load
                     echo
                     cd tools/facebook-brute-3
-                    ls
+                    python2 facebook3.py
                         elif [[ $attacks == '05' || $attacks == '5' ]]; then
                         load
                         echo
@@ -759,8 +799,8 @@ attacks(){
                             elif [[ $attacks == '14' ]]; then
                             load
                             echo
-                            cd tools/Pesbukmbf
-                            python2 pesbukmbf.py
+                            cd tools/Multiface
+                            python2 multiface.py
                                 elif [[ $attacks == '15' ]]; then
                                 load
                                 echo
@@ -789,8 +829,8 @@ attacks(){
                                             elif [[ $attacks == '20' ]]; then
                                             load
                                             echo
-                                            cd tools/hekpesbuk
-                                            python2 hekpesbuk
+                                            cd tools/Darkroom
+                                            python2 darkroom.py
                                         elif [[ $attacks == '21' ]]; then
                                         load
                                         echo
@@ -801,20 +841,26 @@ attacks(){
                                     echo
                                     cd tools/Katak
                                     python katak.py
+                                elif [[ $attacks == '22' ]]; then
+                                load
+                                echo
+                                cd tools/Facecracks
+                                python2 facecracks.py
                 elif [[ $attacks == '00' || $attacks == '0' ]]; then
                 echo
-                printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mBack to main menu!\n\e[0m"
+                printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mKembali ke menu!\n\e[0m"
                 echo
                 sleep 1
-                clear
+                clearscreen
                 banner
                 menu
         else
             echo
-            printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mInvalid option!\n\e[0m"
+            printf "\e[0m[=\e[1;41;77m Pilihan Salah \e[0m=]"
             echo
             sleep 1
             clear
+            reset
             banner
             attacks
     fi
@@ -840,9 +886,9 @@ hijack(){
     sleep 0.03
     printf "\e[0m[\e[1;96m08\e[0m] sqlmate\n"
     sleep 0.03
-    printf "\e[0m[\e[1;96m09\e[0m] sqlokmed\n"
+    printf "\e[0m[\e[1;96m09\e[0m] Tebasindex\n"
     sleep 0.03
-    printf "\e[0m[\e[1;96m10\e[0m] Zones\n"
+    printf "\e[0m[\e[1;96m10\e[0m] Thefacesite\n"
     sleep 0.03
     printf "\e[0m[\e[1;96m11\e[0m] Xshell\n"
     sleep 0.03
@@ -856,11 +902,11 @@ hijack(){
     sleep 0.03
     printf "\e[0m[\e[1;96m16\e[0m] OWScan\n"
     sleep 0.03
-    printf "\e[0m[\e[1;96m17\e[0m] ko-dork\n"
+    printf "\e[0m[\e[1;96m17\e[0m] Ko-Dork\n"
     sleep 0.03
     printf "\e[0m[\e[1;96m18\e[0m] ApSca\n"
     sleep 0.03
-    printf "\e[0m[\e[1;96m19\e[0m] amox\n"
+    printf "\e[0m[\e[1;96m19\e[0m] Amox\n"
     sleep 0.03
     printf "\e[0m[\e[1;96m20\e[0m] FaDe\n"
     sleep 0.03
@@ -868,15 +914,15 @@ hijack(){
     sleep 0.03
     printf "\e[0m[\e[1;96m22\e[0m] HPB\n"
     sleep 0.03
-    printf "\e[0m[\e[1;96m23\e[0m] inther\n"
+    printf "\e[0m[\e[1;96m23\e[0m] Inther\n"
     sleep 0.03
     printf "\e[0m[\e[1;96m24\e[0m] Atlas\n"
     sleep 0.03
     printf "\e[0m[\e[1;96m25\e[0m] MaxSubdoFinder\n"
     sleep 0.03
-    printf "\e[0m[\e[1;96m00\e[0m] Back to main menu\n"
+    printf "\e[0m[\e[1;96m00\e[0m] Kembali ke menu\n"
     sleep 1
-    read -p $'\n\e[0m[\e[1;97m+\e[0m] \e[1;77mSelect an option: \e[0m\en' hijack
+    read -p $'\n\e[0m[\e[1;97m+\e[0m] \e[1;77mMasukann opsi: \e[0m\en' hijack
         if [[ $hijack == '01' || $hijack == '1' ]]; then
         load
         echo
@@ -890,8 +936,8 @@ hijack(){
                 elif [[ $hijack == '03' || $hijack == '3' ]]; then
                 load
                 echo
-                cd tools/xgans
-                ls
+                cd tools/ohmyqr
+                bash ohmyqr.sh
                     elif [[ $hijack == '04' || $hijack == '4' ]]; then
                     load
                     echo
@@ -906,7 +952,7 @@ hijack(){
                     load
                     echo
                     cd tools/sqldump
-                    ls
+                    ./sqldump.py
                 elif [[ $hijack == '07' || $hijack == '7' ]]; then
                 load
                 echo
@@ -920,13 +966,13 @@ hijack(){
         elif [[ $hijack == '09' || $hijack == '9' ]]; then
         load
         echo
-        cd tools/sqlokmed
-        ls
+        cd tools/Tebasindex
+        bash tebasindex.sh
             elif [[ $hijack == '10' ]]; then
             load
             echo
-            cd tools/zones
-            ls
+            cd tools/Thefacesite
+            python2 thefacesite.py
                 elif [[ $hijack == '11' ]]; then
                 load
                 echo
@@ -956,12 +1002,12 @@ hijack(){
                                     load
                                     echo
                                     cd tools/OWScan
-                                    ls
+                                    php owscan.php
                                         elif [[ $hijack == '17' ]]; then
                                         load
                                         echo
                                         cd tools/ko-dork
-                                        ls
+                                        python2 dork.py
                                             elif [[ $hijack == '18' ]]; then
                                             load
                                             echo
@@ -976,12 +1022,12 @@ hijack(){
                                             load
                                             echo
                                             cd tools/FaDe
-                                            ls
+                                            python fade.py
                                         elif [[ $hijack == '21' ]]; then
                                         load
                                         echo
                                         cd tools/AUXILE
-                                        ls
+                                        python2 AUXILE.py
                                     elif [[ $hijack == '22' ]]; then
                                     load
                                     echo
@@ -997,7 +1043,7 @@ hijack(){
                             load
                             echo
                             cd tools/Atlas
-                            ls
+                            python atlas.py
                         elif [[ $hijack == '25' ]]; then
                         load
                         echo
@@ -1006,18 +1052,19 @@ hijack(){
                         ls
                 elif [[ $hijack == '00' || $hijack == '0' ]]; then
                 echo
-                printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mBack to main menu!\n\e[0m"
+                printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mKembali ke menu!\n\e[0m"
                 echo
                 sleep 1
-                clear
+                clearscreen
                 banner
                 menu
         else
             echo
-            printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mInvalid option!\n\e[0m"
+            printf "\e[0m[=\e[1;41;77m Pilihan Salah \e[0m=]"
             echo
             sleep 1
             clear
+            reset
             banner
             hijack
     fi
@@ -1029,7 +1076,7 @@ exploit(){
     sleep 1.0
     printf "\e[0m[\e[1;91m01\e[0m] Metasploit\n"
     sleep 0.03
-    printf "\e[0m[\e[1;91m02\e[0m] comix\n"
+    printf "\e[0m[\e[1;91m02\e[0m] Comix\n"
     sleep 0.03
     printf "\e[0m[\e[1;91m03\e[0m] sqlmap\n"
     sleep 0.03
@@ -1053,9 +1100,9 @@ exploit(){
     sleep 0.03
     printf "\e[0m[\e[1;91m13\e[0m] ASU\n"
     sleep 0.03
-    printf "\e[0m[\e[1;91m00\e[0m] Back to main menu\n"
+    printf "\e[0m[\e[1;91m00\e[0m] Kembali ke menu\n"
     sleep 1
-    read -p $'\n\e[0m[\e[1;97m+\e[0m] \e[1;77mSelect an option: \e[0m\en' exploit
+    read -p $'\n\e[0m[\e[1;97m+\e[0m] \e[1;77mMasukan opsi: \e[0m\en' exploit
         if [[ $exploit == '01' || $exploit == '1' ]]; then
         load
         echo
@@ -1065,7 +1112,7 @@ exploit(){
             load
             echo
             cd tools/commix
-            ls
+            python commix.py -h
                 elif [[ $exploit == '03' || $exploit == '3' ]]; then
                 load
                 echo
@@ -1080,7 +1127,7 @@ exploit(){
                         load
                         echo
                         cd tools/A-Rat
-                        ls
+                        python A-Rat.py
                     elif [[ $exploit == '06' || $exploit == '6' ]]; then
                     load
                     echo
@@ -1106,17 +1153,19 @@ exploit(){
             load
             echo
             cd tools/txtool
-            ls
+            ./install.py
+            txtool
                 elif [[ $exploit == '11' ]]; then
                 load
                 echo
                 cd tools/MSF-pg
-                ls
+                chmod +x msf-pg setup.sh
+                ./setup.sh
                     elif [[ $exploit == '12' ]]; then
                     load
                     echo
                     cd tools/binploit
-                    ls
+                    echo -e "\e[1;77m[#] \e[77;1mTutorial: \e[0mhttps://youtu.be3NTXFUxcKPc\e[0m"
                         elif [[ $exploit == '13' ]]; then
                         load
                         echo
@@ -1124,18 +1173,19 @@ exploit(){
                         python3 ASU.py
                 elif [[ $exploit == '00' || $exploit == '0' ]]; then
                 echo
-                printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mBack to main menu!\n\e[0m"
+                printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mKembali ke menu!\n\e[0m"
                 echo
                 sleep 1
-                clear
+                clearscreen
                 banner
                 menu
         else
             echo
-            printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mInvalid option!\n\e[0m"
+            printf "\e[0m[=\e[1;41;77m Pilihan Salah \e[0m=]"
             echo
             sleep 1
             clear
+            reset
             banner
             exploit
     fi
@@ -1147,15 +1197,15 @@ sniper(){
     sleep 1.0
     printf "\e[0m[\e[1;92m01\e[0m] KnockMail\n"
     sleep 0.03
-    printf "\e[0m[\e[1;92m02\e[0m] Spammer-Grab\n"
+    printf "\e[0m[\e[1;92m02\e[0m] Examkill\n"
     sleep 0.03
-    printf "\e[0m[\e[1;92m03\e[0m] Hac\n"
+    printf "\e[0m[\e[1;92m03\e[0m] Troll\n"
     sleep 0.03
-    printf "\e[0m[\e[1;92m04\e[0m] Spammer-Email\n"
+    printf "\e[0m[\e[1;92m04\e[0m] Spammer-Grab\n"
     sleep 0.03
     printf "\e[0m[\e[1;92m05\e[0m] SocialFish\n"
     sleep 0.03
-    printf "\e[0m[\e[1;92m06\e[0m] santet-online\n"
+    printf "\e[0m[\e[1;92m06\e[0m] Santet-Online\n"
     sleep 0.03
     printf "\e[0m[\e[1;92m07\e[0m] SpazSMS\n"
     sleep 0.03
@@ -1163,28 +1213,31 @@ sniper(){
     sleep 0.03
     printf "\e[0m[\e[1;92m09\e[0m] ASU\n"
     sleep 0.03
-    printf "\e[0m[\e[1;92m00\e[0m] Back to main menu\n"
+    printf "\e[0m[\e[1;92m09\e[0m] HiddenEye\n"
+    sleep 0.03
+    printf "\e[0m[\e[1;92m00\e[0m] Kembali ke menu\n"
     sleep 1
-    read -p $'\n\e[0m[\e[1;97m+\e[0m] \e[1;77mSelect an option: \e[0m\en' sniper
+    read -p $'\n\e[0m[\e[1;97m+\e[0m] \e[1;77mMasukan opsi: \e[0m\en' sniper
         if [[ $sniper == '01' || $sniper == '1' ]]; then
         load
         echo
         cd tools/KnockMail
-        ls
+        python knock.py
             elif [[ $sniper == '02' || $sniper == '2' ]]; then
             load
             echo
-            cd tools/spammer-grab
-            ls
+            cd tools/Examkill
+            python2 examkill.py
                 elif [[ $sniper == '03' || $sniper == '3' ]]; then
                 load
                 echo
-                cd tools/Hac
+                cd tools/troll_project
+                bash troll.sh
                     elif [[ $sniper == '04' || $sniper == '4' ]]; then
                     load
                     echo
-                    cd tools/Spamer-Email
-                    ls
+                    cd tools/Spamer-Grab
+                    python2 spammer.py --help
                         elif [[ $sniper == '05' || $sniper == '5' ]]; then
                         load
                         echo
@@ -1203,27 +1256,33 @@ sniper(){
                             elif [[ $sniper == '08' || $sniper == '8' ]]; then
                             load
                             echo
-                            cd tools/LiteOTP
-                            ls
+                            cd tools/Grabspams
+                            php grabspams.php
                         elif [[ $sniper == '09' || $sniper == '9' ]]; then
                         load
                         echo
                         cd tools/ASU
-                        ls
+                        python3 ASU.py
+                    elif [[ $sniper == '10' ]]; then
+                    load
+                    echo
+                    cd tools/HiddenEye
+                    python3 hiddeneye.py
                 elif [[ $sniper == '00' || $sniper == '0' ]]; then
                 echo
-                printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mBack to main menu!\n\e[0m"
+                printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mKembali ke menu!\n\e[0m"
                 echo
                 sleep 1
-                clear
+                clearscreen
                 banner
                 menu
         else
             echo
-            printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mInvalid option!\n\e[0m"
+            printf "\e[0m[=\e[1;41;77m Pilihan Salah \e[0m=]"
             echo
             sleep 1
             clear
+            reset
             banner
             sniper
     fi
@@ -1247,13 +1306,13 @@ other(){
     sleep 0.03
     printf "\e[0m[\e[1;93m07\e[0m] VCRT\n"
     sleep 0.03
-    printf "\e[0m[\e[1;93m08\e[0m] E-Code\n"
+    printf "\e[0m[\e[1;93m08\e[0m] Compilers\n"
     sleep 0.03
     printf "\e[0m[\e[1;93m09\e[0m] Termux-Styling\n"
     sleep 0.03
     printf "\e[0m[\e[1;93m10\e[0m] PassGen\n"
     sleep 0.03
-    printf "\e[0m[\e[1;93m11\e[0m] xl-py\n"
+    printf "\e[0m[\e[1;93m11\e[0m] XL-py\n"
     sleep 0.03
     printf "\e[0m[\e[1;93m12\e[0m] BeanShell\n"
     sleep 0.03
@@ -1269,7 +1328,7 @@ other(){
     sleep 0.03
     printf "\e[0m[\e[1;93m18\e[0m] TermPyter\n"
     sleep 0.03
-    printf "\e[0m[\e[1;93m19\e[0m] jadx\n"
+    printf "\e[0m[\e[1;93m19\e[0m] Jadx\n"
     sleep 0.03
     printf "\e[0m[\e[1;93m20\e[0m] F4K3\n"
     sleep 0.03
@@ -1277,17 +1336,22 @@ other(){
     sleep 0.03
     printf "\e[0m[\e[1;93m22\e[0m] Google\n"
     sleep 0.03
-    printf "\e[0m[\e[1;93m23\e[0m] Virus & Zombie\n"
+    printf "\e[0m[\e[1;93m23\e[0m] vBug\n"
     sleep 0.03
-    printf "\e[0m[\e[1;93m00\e[0m] Back to main menu\n"
+    printf "\e[0m[\e[1;93m24\e[0m] Keydroid\n"
+    sleep 0.03
+    printf "\e[0m[\e[1;93m25\e[0m] WhatsHack\n"
+    sleep 0.03
+    printf "\e[0m[\e[1;93m26\e[0m] Anonymous\n"
+    sleep 0.03
+    printf "\e[0m[\e[1;93m00\e[0m] Kembali ke menu\n"
     sleep 1
-    read -p $'\n\e[0m[\e[1;97m+\e[0m] \e[1;77mSelect an option: \e[0m\en' other
+    read -p $'\n\e[0m[\e[1;97m+\e[0m] \e[1;77mMasukan opsi: \e[0m\en' other
         if [[ $other == '01' || $other == '1' ]]; then
         load
         echo
-        cd tools/SpiderBot
-        ls
-        
+        cd tools/Spiderbot
+        sh searchspider.sh
             elif [[ $other == '02' || $other == '2' ]]; then
             load
             echo
@@ -1317,27 +1381,27 @@ other(){
                 load
                 echo
                 cd tools/Evil-create-framework
-                ls
+                sh install.sh
             elif [[ $other == '08' || $other == '8' ]]; then
             load
             echo
-            cd tools/Ecode
-            ls
+            cd tools/Compilers
+            python2 compilers.py
         elif [[ $other == '09' || $other == '9' ]]; then
         load
         echo
         cd tools/Termux-Styling-Shell-Script
-        ls
+        bash termux-styling.sh
             elif [[ $other == '10' ]]; then
             load
             echo
             cd tools/PassGen
-            ls
+            python passgen.py smith
                 elif [[ $other == '11' ]]; then
                 load
                 echo
                 cd tools/xl-py
-                ls
+                python app.py
                     elif [[ $other == '12' ]]; then
                     load
                     echo
@@ -1347,7 +1411,7 @@ other(){
                         load
                         echo
                         cd tools/PRET
-                        ls
+                        python2 pret.py -h
                             elif [[ $other == '14' ]]; then
                             load
                             echo
@@ -1361,18 +1425,18 @@ other(){
                                     elif [[ $other == '16' ]]; then
                                     load
                                     echo
-                                    cd tools/AutoVisitor
-                                    ls
+                                    cd tools/AUTOVISITOR
+                                    php autovisitor.php
                                         elif [[ $other == '17' ]]; then
                                         load
                                         echo
                                         cd tools/RShell
-                                        ls
+                                        python2 server.py
                                             elif [[ $other == '18' ]]; then
                                             load
                                             echo
                                             cd tools/TermPyter
-                                            ls
+                                            bash setup.sh
                                                 elif [[ $other == '19' ]]; then
                                                 load
                                                 echo
@@ -1392,32 +1456,54 @@ other(){
                                     load
                                     echo
                                     cd tools/sqldump
-                                    ls
+                                    python2 sqldump.py
                                 elif [[ $other == '23' ]]; then
                                 load
                                 echo
                                 cd tools/vbug
-                elif [[ $other == '00' || $other == '0' ]]; then
+                                python vbug.py
+                            elif [[ $other == '23' ]]; then
+                            load
+                            echo
+                            cd tools/vbug
+                            python vbug.py
+                        elif [[ $other == '24' ]]; then
+                        load
+                        echo
+                        cd tools/keydroid
+                        bash keydroid.sh
+                    elif [[ $other == '25' ]]; then
+                    load
+                    echo
+                    cd tools/whatshack
+                    bash whatshack.sh
+                elif [[ $other == '26' ]]; then
+                load
                 echo
-                printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mBack to main menu!\n\e[0m"
-                echo
-                sleep 1
-                clear
-                banner
-                menu
+                cd tools/Anonymous
+                python2 anonymous.py
+            elif [[ $other == '00' || $other == '0' ]]; then
+            echo
+            printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mKembali ke menu!\n\e[0m"
+            echo
+            sleep 1
+            clearscreen
+            banner
+            menu
         else
             echo
-            printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mInvalid option!\n\e[0m"
+            printf "\e[0m[=\e[1;41;77m Pilihan Salah \e[0m=]"
             echo
             sleep 1
             clear
+            reset
             banner
             other
     fi
 }
-    #checkroot
-    #checktor
-    #dependencies
-        clearscreen
-        banner
-        menu
+#checkroot
+#checktor
+#dependencies
+    clearscreen
+    banner
+    menu
