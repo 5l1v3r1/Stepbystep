@@ -3,7 +3,7 @@
 </a></p>
 <h1 align="center">Step By Step</h1>
 
-#### Informasi
+#### Informasi:
 ```
 Nama        : Stepbystep
 Versi       : 4.4 (Update: 17 November 2020, 6:30 PM)
