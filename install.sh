@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 # Stepbystep
 # Coded by Nedi Senja
 # Github: https://github.com/stepbystepexe/Stepbystep
