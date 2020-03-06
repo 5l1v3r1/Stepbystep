@@ -6,7 +6,7 @@
 #### Informasi:
 ```
 Nama        : Stepbystep
-Versi       : 4.4 (Update: 17 November 2020, 6:30 PM)
+Versi       : 1.5 (Update: 17 November 2020, 6:30 PM)
 Tanggal     : 07 Mei 2019
 Author      : Nedi Senja
 Tujuan      : Sengaja di encrypt biar simpel
