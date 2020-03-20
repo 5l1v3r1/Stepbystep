@@ -1,8 +1,7 @@
- <p align="center">
-  <img src="https://github.com/stepbystepexe/Stepbystep/blob/master/Logo.png" width="200"/>
-</a></p>
-<h1 align="center">Step By Step</h1>
-
+# Stepbystep:
+Stepbystep merupakan sebuah kumpulan berbagai macam tool di dalamnya, tool ini di buat dengan sejuta cita dan rasa. Mungkin bagi sebagian orang yang skilnya di bilang pro tool ini gx ada apa-apanya sebut saja sampah, tapi seburuk apapun itu tolong hargai karaya milik orang dan saya tidak rela kalo code program sampah ini di tiru
+#### Screenshot:
+![](./Skrinsut.png)
 #### Informasi:
 ```
 Nama        : Stepbystep
@@ -22,8 +21,7 @@ NB          : Manusia gax ada yang sempurna
 
 [ Gunakan tool ini dengan bijak ]
 ````
-
-#### Daftar Fitur:
+#### Fitur:
 + Information Gathering
 + Vulnerability Assessment
 + Stress Testing
@@ -32,7 +30,6 @@ NB          : Manusia gax ada yang sempurna
 + Exploitation Tools
 + Sniffing & Spoofing
 + Others
-
 ##### Cara Menginstall:
 ```
 git clone https://github.com/stepbystepexe/Stepbystep
@@ -40,12 +37,11 @@ cd Stepbystep
 ls
 bash stepbystep.sh
 ```
-#### Screenshot:
-<p align="center">
-  <img src="https://github.com/stepbystepexe/Stepbystep/blob/master/Skrinsut.png">
-</a></p>
-
+#### Kontak:
++ Email d_q16x@outlook.co.id
++ WhatsApp https://tinyurl.com/wel4alo
 #### Paypal:
-https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CLKRT5QXXFJY4&source=url
++ Onclick https://bit.ly/3dcEQcN
 ### LiberaPay:
 <noscript><a href="https://liberapay.com/stepbystepexe/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
+>**Created by Nedi Senja**
