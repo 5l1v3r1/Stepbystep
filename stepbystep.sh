@@ -144,7 +144,7 @@ NB          : Manusia gax ada yang sempurna
               sama kaya tool ini.
               Silahkan laporkan kritik atau saran
               Ke - Email: d_q16x@outlook.co.id
-                 - WhatsApp: +62 8577-5433-901
+                 - WhatsApp: https://tinyurl.com/wel4alo
 
 [ \e[4mGunakan tool ini dengan bijak \e[0m]\n"
 sleep 1
@@ -726,7 +726,7 @@ attacks(){
     sleep 0.03
     printf "\e[0m[\e[1;93m22\e[0m] Katak\n"
     sleep 0.03
-    printf "\e[0m[\e[1;93m23\e[0m] Facecracks\n"
+    printf "\e[0m[\e[1;93m23\e[0m] Facetool\n"
     sleep 0.03
     printf "\e[0m[\e[1;93m00\e[0m] Kembali ke menu\n"
     sleep 1
@@ -844,8 +844,8 @@ attacks(){
                                 elif [[ $attacks == '22' ]]; then
                                 load
                                 echo
-                                cd tools/Facecracks
-                                python2 facecracks.py
+                                cd tools/Facetool
+                                python2 facetool.py
                 elif [[ $attacks == '00' || $attacks == '0' ]]; then
                 echo
                 printf "\e[0m[\e[1;91m!\e[0m] \e[0;1;77mKembali ke menu!\n\e[0m"
@@ -1257,7 +1257,7 @@ sniper(){
                             load
                             echo
                             cd tools/Grabspams
-                            php grabspams.php
+                            python3 grabspams.py
                         elif [[ $sniper == '09' || $sniper == '9' ]]; then
                         load
                         echo
