@@ -1,5 +1,5 @@
 # Stepbystep:
-**```Stepbystep```** merupakan sebuah kumpulan berbagai macam tool di dalamnya, tool ini di buat dengan sejuta cita dan rasa. Mungkin bagi sebagian orang yang skilnya di bilang pro tool ini gx ada apa-apanya sebut saja sampah, tapi seburuk apapun itu tolong hargai karaya milik orang dan saya tidak rela kalo code program sampah ini di tiru
+**```Stepbystep```** merupakan sebuah kumpulan berbagai macam tool di dalamnya, tool ini di buat dengan sejuta cita dan rasa. Mungkin bagi sebagian orang yang skilnya di bilang pro tool ini gx ada apa-apanya sebut saja sampah, tapi seburuk apapun itu tolong hargai karaya milik orang dan saya tidak rela kalo code program sampah ini di tiru.
 #### Screenshot:
 ![](./Skrinsut.png)
 #### Informasi:
@@ -20,7 +20,7 @@ NB          : Manusia gax ada yang sempurna
                  - WhatsApp: https://tinyurl.com/wel4alo
 
 [ Gunakan tool ini dengan bijak ]
-````
+```
 #### Fitur:
 + Information Gathering
 + Vulnerability Assessment
