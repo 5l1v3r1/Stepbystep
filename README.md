@@ -9,18 +9,18 @@
     <img src="https://img.shields.io/badge/License-GPL%203-red.svg">
   </a>
   <a href="https://github.com/stepbystepexe/Stepbystep/releases">
-    <img src="https://img.shields.io/badge/Release-1.0-blue.svg">
+    <img src="https://img.shields.io/badge/Release-1.5-blue.svg">
   </a>
-  <a href="https://github.com/stepbystepexe/Stepbystep/blob/master/pulls">
+  <a href="https://github.com/stepbystepexe/Stepbystep/pulls">
     <img src="https://img.shields.io/badge/Pull%20Request-0-important.svg">
   </a>
-  <a href="https://github.com/stepbystepexe/Stepbystep/blob/master/projects">
+  <a href="https://github.com/stepbystepexe/Stepbystep/projects">
     <img src="https://img.shields.io/badge/Projects-None-blueviolet.svg">
   </a>
-  <a href="https://github.com/stepbystepexe/Stepbystep/blob/master/issues">
+  <a href="https://github.com/stepbystepexe/Stepbystep/issues">
     <img src="https://img.shields.io/badge/Issues-1-yellowgreen.svg">
   </a>
-  <a href="https://github.com/stepbystepexe/Stepbystep/blob/master/security/advisories">
+  <a href="https://github.com/stepbystepexe/Stepbystep/security/advisories">
     <img src="https://img.shields.io/badge/Security-Patch-ff69b4.svg">
   </a>
   <a href="https://opensource.org">
