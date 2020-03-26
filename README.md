@@ -46,8 +46,8 @@
 ### Informasi:
 ```text
 Nama        : Stepbystep
-Versi       : 1.5 (Update: 01 Februari 2020, 1:30 PM)
-Tanggal     : 10 Juli 2019
+Versi       : 1.5 (Update: 20 Februari 2020, 1:30 PM)
+Tanggal     : 10 Agustus 2019
 Author      : Nedi Senja
 Tujuan      : Sengaja di encrypt biar simpel
               kumpulan tool termux
