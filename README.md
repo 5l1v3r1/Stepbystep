@@ -71,7 +71,7 @@ NB          : Manusia gax ada yang sempurna
 + Web Hacking
 + Exploitation Tools
 + Sniffing & Spoofing
-+ Others
++ Other
 
 ### Installisasi:
 ```text
