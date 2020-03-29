@@ -40,7 +40,7 @@
 </p>
 
 <p align="center">
- <img src="https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Stepbystepexe%2FStepbystep" alt="Twitter"> <br>
+ <img src="https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Stepbystepexe%2FStepbystep" alt="Twitter">
 </p>
 
 ### Informasi:
