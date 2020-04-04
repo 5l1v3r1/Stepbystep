@@ -132,8 +132,8 @@ printf "\e[0;1;47;90m[             Stepbystep, My Github: @stepbystepexe        
 toilet -f smslant 'StepByStep'
 printf "
 Nama        : Stepbystep
-Versi       : 4.4 (Update: 17 November 2020, 6:30 PM)
-Tanggal     : 07 Mei 2019
+Versi       : 1.5 (Update: 20 Februari 2020, 1:30 PM)
+Tanggal     : 10 Agustus 2019
 Author      : Nedi Senja
 Tujuan      : Sengaja di encrypt biar simpel
               kumpulan tool termux
